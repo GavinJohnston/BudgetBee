@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBee", "BudgetBee\BudgetBee.csproj", "{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5511AFB7-0A8D-493D-95E9-9C68622F8333}
+	EndGlobalSection
+EndGlobal

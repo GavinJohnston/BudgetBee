@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="potModal">
+    <div id="modalHeader">
+        <h1 class="headers">View Pots</h1><div id="modalClose">×</div>
+    </div>
+    <div id="potViewer"></div>
+</div>
+<div id="modalBackground"></div>
+<header id="header">
+    <div id="header_text">
+        <h1>BudgetBee</h1>
+        <h2>The Budgeting App</h2>
+    </div>
+</header>
+<div id="inputContainer">
+    <div class="inputBox" id="depositBox">
+        <h1 class="headers">Deposit</h1>
+        <form id="depositForm">
+            <h2 class="formHeaders">Amount</h2>
+            <input type="number" id="depositAmount" class="numberBox" placeholder="000.00">
+            <h2 class="formHeaders">Pot</h2>
+            <input list="Pots" name="potLists" class="itemList" placeholder="Select Pot">
+            <datalist id="Pots">
+                <option value="Main Pot"/>
+            </datalist>
+            <h2 class="formHeaders">Category</h2>
+            <input type="text" id="depositCategory" class="catBox" placeholder="Wages, Savings, Gift..">
+            <h2 class="formHeaders">Date</h2>
+            <h2 class="dateText">30/04/22</h2>
+            <input type="submit" class="submit" value="Deposit">
+        </form>
+    </div>
+    <div class="inputBox" id="withdrawBox">
+        <h1 class="headers">Withdraw</h1>
+        <form id="withdrawForm">
+            <h2 class="formHeaders">Amount</h2>
+            <input type="number" id="withdrawAmount" class="numberBox" placeholder="MAX: 999.99">
+            <h2 class="formHeaders">Pot</h2>
+            <input list="Pots" name="potLists" class="itemList" placeholder="Select Pot">
+            <datalist id="Pots">
+                <option value="Main Pot"/>
+            </datalist>
+            <h2 class="formHeaders">Category</h2>
+            <input type="text" id="withdrawCategory" class="numberBox" placeholder="Hobby Fund, New Laptop..">
+            <h2 class="formHeaders">Date</h2>
+            <h2 class="dateText">30/04/22</h2>
+            <input type="submit" class="submit" value="Withdraw">
+        </form>
+    </div>
+    <div class="inputBox" id="transactionHistory">
+        <h1 class="headers">History</h1>
+        <table id="historyTable">
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Pot</th>
+                <th>In / Out</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="potManagerContainer">
+    <div id="potManagerBoxL">
+        <h1 class="headers">Create Pot</h1>
+        <form class="potGenerator">
+            <div class="generateBox">
+                <h2 class="formHeaders">Pot Name</h2>
+                <input type="text" id="potName" class="numberBox" placeholder="Holiday Fund, New Laptop..">
+            </div>
+            <input type="submit" class="submit" value="Create Pot">
+        </form>
+    </div>
+    <div id="potManagerBoxR">
+        <h1 class="headers">Pot Manager</h1>
+        <form class="potTransfer">
+            <div class="transferBox">
+                <h2 class="formHeaders">Amount</h2>
+                <input type="number" id="depositAmount" class="numberBox" placeholder="000.00" value="amount">
+                <datalist id="Pots">
+                    <option value="Main Pot"/>
+                </datalist>
+            </div>
+            <div class="transferBox">
+                <h2 class="formHeaders">From</h2>
+                <input list="Pots" name="potLists" class="itemList" placeholder="Select Pot" id="fromPot">
+                <datalist id="Pots">
+                    <option value="Main Pot"/>
+                </datalist>
+            </div>
+            <div class="transferBox">
+                <h2 class="formHeaders">To</h2>
+                <input list="Pots" name="potLists" class="itemList" placeholder="Select Pot" id="toPot">
+                <datalist id="Pots">
+                    <option value="Main Pot"/>
+                </datalist>
+            </div>
+        </form>
+        <div class="managerBtns">
+            <input type="submit" class="modalBtn" value="View pots">
+            <input type="submit" class="submit" value="Transfer Funds">
+        </div>
+    </div>
+</div>

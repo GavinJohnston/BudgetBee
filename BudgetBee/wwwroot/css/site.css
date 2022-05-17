@@ -1,0 +1,385 @@
+﻿/** 
+#14233c - Dark Blue
+#1e778c - Blue
+#9abda9 - Light Blue
+#ead19f - Cream
+#e64c5f - Red
+**/
+
+/** HEADER **/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+body {
+    background-color: #14233c;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#header {
+    width: 70vw;
+    height: 10vh;
+    border-radius: 0 0 5px 5px;
+    background-color: #1e778c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#header_text {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+    #header_text > h1 {
+        color: white;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        padding: 3px;
+        font-size: 2em;
+        padding: 0;
+        display: inline-block;
+    }
+
+    #header_text > h2 {
+        color: #ead19f;
+        padding: 5px;
+        letter-spacing: 1px;
+        font-size: 1.7em;
+        padding: 0;
+        display: inline-block;
+    }
+
+#buzz {
+    display: inline-block;
+    position: absolute;
+    right: -10%;
+    bottom: 50%;
+}
+
+/** REUSABLE **/
+
+.headers {
+    color: white;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+    width: 75%;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.formHeaders {
+    margin-top: 15px;
+    color: #ead19f;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+}
+
+.numberBox {
+    background-color: #1e778c;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 75%;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px 0 5px 0;
+    outline: none;
+}
+
+.submit {
+    background-color: #e64c5f;
+    color: white;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    margin: 15px 0 5px 0;
+    outline: none;
+    cursor: pointer;
+}
+
+    .submit:hover,
+    #sortByBtn:hover {
+        filter: brightness(110%);
+    }
+
+.modalBtn:hover {
+    filter: brightness(110%);
+}
+
+/** INPUT BOX **/
+
+#inputContainer {
+    width: 70vw;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.inputBox {
+    background-color: #1e778c;
+    width: calc(33% - 10px);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 20px;
+}
+
+.numberBox {
+    background-color: #1e778c;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 75%;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px 0 5px 0;
+    outline: none;
+}
+
+.catBox {
+    background-color: #1e778c;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 75%;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px 0 5px 0;
+    outline: none;
+}
+
+    .catBox::placeholder {
+        color: rgb(198, 197, 197);
+    }
+
+.numberBox::placeholder {
+    color: rgb(198, 197, 197);
+}
+
+.submit {
+    background-color: #e64c5f;
+    color: white;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    margin: 15px 0 5px 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.dateText {
+    color: rgb(198, 197, 197);
+    font-weight: lighter;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    font-size: 1.3em;
+    margin: 5px 0 5px 0;
+}
+
+.itemList {
+    background-color: #1e778c;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 10px;
+    width: 75%;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px 0 5px 0;
+    outline: none;
+}
+
+    .itemList::placeholder {
+        color: rgb(198, 197, 197);
+    }
+
+#historyTable {
+    color: white;
+    width: 100%;
+    text-align: left;
+}
+
+#transactionHistory {
+}
+
+#SortByBtn:hover {
+    color: #e64c5f;
+}
+
+#potManagerContainer {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+#potManagerBoxL {
+    background-color: #1e778c;
+    border-radius: 5px;
+    width: calc(33% - 10px);
+    padding: 20px;
+}
+
+#potManagerBoxR {
+    background-color: #1e778c;
+    border-radius: 5px;
+    width: calc(66%);
+    padding: 20px;
+}
+
+#potManagerBox > h1 {
+    width: 50%;
+}
+
+.potGenerator {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.generateBox {
+    width: 75%;
+    height: 100%;
+}
+
+    .generateBox > .numberBox {
+        width: 100%;
+    }
+
+    .generateBox > .submit {
+        width: 50%;
+    }
+
+.potTransfer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.transferBox {
+    width: calc(33% - 10px);
+    height: 100%;
+}
+
+    .transferBox > .numberBox,
+    .transferBox > .itemList {
+        width: calc(100%);
+    }
+
+.managerBtns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .managerBtns > .submit {
+        width: calc(50% - 10px);
+    }
+
+.modalBtn {
+    font-weight: lighter;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: large;
+    width: calc(50% - 10px);
+    height: 50px;
+    border: 0;
+    background-color: #ead19f;
+    margin: 15px 0 5px 0;
+    color: #1e778c;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/** MODAL **/
+
+#modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    cursor: pointer;
+    display: none;
+}
+
+#potModal {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.196);
+    padding: 20px;
+    display: none;
+}
+
+#modalHeader {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    #modalHeader > .headers {
+        color: #1e778c;
+        border-bottom: 2px solid #1e778c;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+    }
+
+#modalClose {
+    cursor: pointer;
+    font-size: 2em;
+    color: #1e778c;
+}
+
+#potViewer {
+    border: 1px solid red;
+    width: 100%;
+    height: 100%;
+}
