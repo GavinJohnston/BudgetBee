@@ -1,4 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BudgetBee.Models;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddDbContext<BudgetBeeContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
