@@ -8,7 +8,8 @@ namespace BudgetBee.Models
 		public int Id { get; set; }
 		public decimal Amount { get; set; }
 		public string? Direction { get; set; }
-		public DateTime Date { get; set; } = DateTime.Now.Date;
+		public string? PotName { get; set; }
+		public DateTime Date { get; set; } = DateTime.Now.Date.ToLocalTime();
 
         public int PotId { get; set; }
 
@@ -19,4 +20,3 @@ namespace BudgetBee.Models
         //public Category Category { get; set; }
     }
 }
-

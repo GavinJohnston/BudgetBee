@@ -80,6 +80,9 @@ namespace BudgetBee.Migrations
                     b.Property<int>("PotId")
                         .HasColumnType("int");
 
+                    b.Property<string>("PotName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");

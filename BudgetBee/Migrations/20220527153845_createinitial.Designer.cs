@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BudgetBee.Migrations
 {
     [DbContext(typeof(BudgetBeeContext))]
-    [Migration("20220526185214_createinitial")]
+    [Migration("20220527153845_createinitial")]
     partial class createinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,6 +81,9 @@ namespace BudgetBee.Migrations
 
                     b.Property<int>("PotId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PotName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

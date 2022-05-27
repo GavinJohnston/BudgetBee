@@ -2,11 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="potModal">
+<div id="potModal" onLoad="currentDate()">
     <div id="modalHeader">
         <h1 class="headers">View Pots</h1><div id="modalClose" onclick="closeModal()">×</div>
     </div>
-    <div id="potViewer"></div>
+    <div id="potViewer">
+        <div id="pot"></div>
+    </div>
 </div>
 <div id="modalBackground" onclick="closeModal()"></div>
 <header id="header">
@@ -14,21 +16,22 @@
         <h1>BudgetBee</h1>
         <h2>The Budgeting App</h2>
     </div>
+    <div id="totalBox"></div>
 </header>
 <div id="inputContainer">
     <div class="inputBox" id="depositBox">
         <h1 class="headers">Deposit</h1>
         <form id="deposit" onsubmit="return false;">
             <h2 class="formHeaders">Amount</h2>
-            <input type="number" id="Amount" name="Amount" class="numberBox" placeholder="000.00" step="any">
+            <input type="number" id="Amount" name="Amount" class="numberBox" placeholder="£000.00" step="any">
             <h2 class="formHeaders">Pot</h2>
-            <select id="Pots" name="potLists" class="potLists" placeholder="Select Pot">
+            <select id="DepositPots" name="potLists" class="potLists" placeholder="Select Pot">
                 @*<option value="firefox">Firefox</option>*@
             </select>
             <h2 class="formHeaders">Category</h2>
             <input type="text" id="Category" name="Category" class="catBox" placeholder="Wages, Savings, Gift..">
             <h2 class="formHeaders">Date</h2>
-            <h2 class="dateText">30/04/22</h2>
+            <h2 class="dateText"></h2>
             <input type="submit" class="submit" value="Deposit" onclick="addTransaction('deposit')"/>
         </form>
     </div>
@@ -36,28 +39,30 @@
         <h1 class="headers">Withdraw</h1>
         <form id="withdraw" onsubmit="return false;">
             <h2 class="formHeaders">Amount</h2>
-            <input type="number" id="Amount" name="Amount" class="numberBox" placeholder="MAX: 999.99" step="any">
+            <input type="number" id="MaxAmount" name="Amount" class="numberBox" step="any">
             <h2 class="formHeaders">Pot</h2>
-            <select id="Pots" name="potLists" class="potLists" placeholder="Select Pot">
+            <select id="withdrawPots" name="potLists" class="potLists" placeholder="Select Pot" onchange="getMaxAmount()">
                 @*<option value="firefox">Firefox</option>*@
             </select>
             <h2 class="formHeaders">Category</h2>
             <input type="text" id="Category" name="Category" class="catBox" placeholder="Hobby Fund, New Laptop..">
             <h2 class="formHeaders">Date</h2>
-            <h2 class="dateText">30/04/22</h2>
+            <h2 class="dateText"></h2>
             <input type="submit" class="submit" value="Withdraw" onclick="addTransaction('withdraw')" />
         </form>
     </div>
     <div class="inputBox" id="transactionHistory">
         <h1 class="headers">History</h1>
         <table id="historyTable">
-            <tr>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Pot</th>
-                <th>Type</th>
-            </tr>
+            <tbody id="historyBody">
+                <tr>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Pot</th>
+                    <th>Type</th>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
@@ -76,27 +81,25 @@
         <h1 class="headers">Pot Manager</h1>
         <form class="potTransfer">
             <div class="transferBox">
-                <h2 class="formHeaders">Amount</h2>
-                <input type="number" id="depositAmount" class="numberBox" placeholder="000.00">
-                <datalist id="Pots">
-                    <option value="Main Pot"/>
-                </datalist>
-            </div>
-            <div class="transferBox">
                 <h2 class="formHeaders">From</h2>
-                <select name="potLists" class="itemList" placeholder="Select Pot" id="fromPot">
+                <select name="potLists" class="potLists" placeholder="Select Pot" id="fromPot">
                 </select>
             </div>
             <div class="transferBox">
                 <h2 class="formHeaders">To</h2>
-                <select name="potLists" class="itemList" placeholder="Select Pot" id="toPot">>
-                    
+                <select name="potLists" class="potLists" placeholder="Select Pot" id="toPot">
+                    >
+
                 </select>
+            </div>
+            <div class="transferBox">
+                <h2 class="formHeaders">Amount</h2>
+                <input type="number" id="transferAmount" class="numberBox" placeholder="000.00">
             </div>
         </form>
         <div class="managerBtns">
             <input type="submit" class="modalBtn" value="View pots" onclick="showModal()">
-            <input type="submit" class="submit" value="Transfer Funds">
+            <input type="submit" class="submit" value="Transfer Funds" onclick="transferFunds()">
         </div>
     </div>
 </div>

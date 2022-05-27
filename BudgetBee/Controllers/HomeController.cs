@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BudgetBee.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace BudgetBee.Controllers;
 
@@ -38,6 +39,37 @@ public class HomeController : Controller
     public async Task<ActionResult<IEnumerable<Pot>>> GetPots()
     {
         return await _context.Pot.ToListAsync();
+    }
+
+    [HttpGet("pots/{id}")]
+    public async Task<ActionResult<Pot>> GetPot(int id)
+    {
+        var item = await _context.Pot.FindAsync(id);
+
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        return item;
+    }
+
+    [HttpPatch("pots/{id}")]
+    public async Task<IActionResult> EditElement(int id, [FromBody] JsonPatchDocument<Pot> patchEntity)
+    {
+        var Pot = await _context.Pot.FindAsync(id);
+
+        if (Pot == null)
+        {
+            return NotFound();
+        }
+
+        patchEntity.ApplyTo(Pot, ModelState);
+
+        _context.Entry(Pot).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return Ok(Pot);
     }
 
     [HttpPost]
