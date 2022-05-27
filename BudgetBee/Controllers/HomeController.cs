@@ -72,6 +72,21 @@ public class HomeController : Controller
         return Ok(Pot);
     }
 
+    [HttpDelete("pots/{id}")]
+    public async Task<IActionResult> DeletePot(int id)
+    {
+        var pot = await _context.Pot.FindAsync(id);
+        if (pot == null)
+        {
+            return NotFound();
+        }
+
+        _context.Pot.Remove(pot);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
     [HttpPost]
     [Route("transaction")]
     public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)

@@ -1,9 +1,15 @@
 ﻿<Properties StartupConfiguration="{0E458B4C-6CB2-4EC9-B0D4-DFD23A898CEF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BudgetBee/Program.cs">
+  <MonoDevelop.Ide.ItemProperties.BudgetBee PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="BudgetBee/wwwroot/js/site.js">
     <Files>
-      <File FileName="BudgetBee/Views/Home/Index.cshtml" Line="10" Column="23" />
-      <File FileName="BudgetBee/wwwroot/css/site.css" Line="394" Column="27" />
-      <File FileName="BudgetBee/Program.cs" Line="35" Column="1" />
+      <File FileName="BudgetBee/Views/Home/Index.cshtml" Line="9" Column="1" />
+      <File FileName="BudgetBee/wwwroot/js/site.js" Line="375" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +27,6 @@
                 <Node name="lib" expanded="True" />
               </Node>
               <Node name="appsettings.json" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -31,11 +36,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.BudgetBee PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

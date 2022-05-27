@@ -35,6 +35,8 @@ function showModal() {
 
     modalBackground.style.display = "inline-block";
     potModal.style.display = "inline-block";
+
+    viewerPopulate();
 }
 
 function addPot() {
@@ -364,3 +366,48 @@ async function totalFunds() {
 
     document.getElementById("totalBox").innerHTML = `TOTAL: <br> £${totalAmount.toFixed(2)}`;
 };
+
+async function viewerPopulate() {
+    var pots = await getPots();
+
+    let parent = document.getElementById("potViewer");
+
+    parent.innerHTML = "";
+
+    pots.forEach(item => {
+
+        let pot = document.createElement("div");
+        pot.setAttribute("class", "pot");
+
+        html =
+        `
+        <div class="potContent">
+        <h1 class="potContentName">
+            ${item.name}
+        </h1>
+        <h1 class="potContentAmount">
+            ${item.amount}
+                </h1>
+        </div>
+        <div class="potDeleteBtn" onclick="deletePot(${item.id})">Delete</div>
+        `
+
+        pot.innerHTML = html;
+
+        parent.appendChild(pot);
+    }) 
+}
+
+async function deletePot(id) {
+    var pot = await getPot(id);
+
+    fetch(`${uri}/pots/${id}`, {
+        method: 'DELETE'
+    })
+        .then(() => {
+            document.getElementById("potViewer").innerHTML = "";
+            viewerPopulate();
+        })
+        .catch(error => console.error('Unable to delete item.', error));
+}
+

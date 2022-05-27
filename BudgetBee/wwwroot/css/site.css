@@ -367,6 +367,7 @@ td {
     z-index: 10;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.196);
     padding: 20px;
+    display: none;
     
 }
 
@@ -391,13 +392,54 @@ td {
 }
 
 #potViewer {
-    border: 1px solid red;
+
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .pot {
-    width: 500px;
-    height: 500px;
+    width: 125px;
+    height: 125px;
     background-color: #6E6A6F;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    margin: 10px;
+}
+
+.potContent {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.potContentName {
+    font-size: 1.3em;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.potContentAmount {
+    font-size: 1.3em;
+    color: white;
+    text-transform: uppercase;
+}
+
+.potDeleteBtn {
+    width: 100%;
+    height: 30%;
+    background-color: #B2675E;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
 }
