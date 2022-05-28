@@ -60,6 +60,7 @@ body {
     color: white;
     text-transform: uppercase;
     font-size: 1.2em;
+    text-align: center;
 }
 
 #buzz {
@@ -145,6 +146,8 @@ body {
     border-radius: 5px;
     display: inline-block;
     padding: 20px;
+    max-height: 58vh;
+    overflow: scroll;
 }
 
 .numberBox {
@@ -240,8 +243,13 @@ body {
 #historyTable {
     color: white;
     text-align: left;
-    
     width: 100%;
+}
+
+#tableContainer {
+    height: 90%;
+    max-height: 90%;
+    overflow: scroll;
 }
 
 td {

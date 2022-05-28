@@ -9,7 +9,7 @@ namespace BudgetBee.Models
 		{
 		}
 
-		public DbSet<Category> Category { get; set; }
+		
 		public DbSet<Pot> Pot { get; set; }
 		public DbSet<Transaction> Transaction { get; set; }
 	}

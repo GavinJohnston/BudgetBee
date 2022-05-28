@@ -9,14 +9,9 @@ namespace BudgetBee.Models
 		public decimal Amount { get; set; }
 		public string? Direction { get; set; }
 		public string? PotName { get; set; }
+		public string? Category { get; set; }
 		public DateTime Date { get; set; } = DateTime.Now.Date.ToLocalTime();
 
         public int PotId { get; set; }
-
-
-        //public int CategoryId { get; set; }
-
-        //public Pot Pot { get; set; }
-        //public Category Category { get; set; }
     }
 }

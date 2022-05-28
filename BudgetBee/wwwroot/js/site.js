@@ -7,7 +7,7 @@ const uri = '';
 
 displayPots();
 getMaxAmount();
-totalFunds();
+getTotal();
 
 (function currentDate() {
     var date = new Date().toLocaleDateString();
@@ -125,6 +125,7 @@ async function addTransaction(form) {
     const item = {
         Amount: parseFloat(formValues.Amount),
         Direction: `${form}`,
+        Category: formValues.Category,
         PotName: formValues.potLists,
         PotId: potId
     };
@@ -145,8 +146,7 @@ async function addTransaction(form) {
             valueToPot(potId, parseFloat(formValues.Amount), form);
             document.getElementById("Amount").value = "";
             document.getElementById("MaxAmount").value = "";
-            totalFunds();
-        }) 
+        })
         .catch(error => console.error('Unable to add item.', error));
 }
 
@@ -173,7 +173,7 @@ async function viewSavedTransaction() {
         `<td>£ ${transaction.amount}</td>
     <td>${transaction.date.split('T')[0].split('-').reverse().join('/')}
     </td>
-    <td>category</td>
+    <td>${transaction.category}</td>
     <td>${transaction.potName}</td>
     <td>${transaction.direction}</td>`
 
@@ -257,6 +257,7 @@ async function valueToPot(potId, newAmount, direction) {
         })
             .then(() => {
                 getMaxAmount();
+                getTotal();
             })
             .catch(error => console.error('Unable to update item.', error));
     } else {
@@ -279,6 +280,7 @@ async function valueToPot(potId, newAmount, direction) {
         })
             .then(() => {
                 getMaxAmount();
+                getTotal();
             })
             .catch(error => console.error('Unable to update item.', error));
     }
@@ -355,32 +357,20 @@ async function transferFunds() {
         .catch(error => console.error('Unable to update item.', error));
 }
 
-async function totalFunds() {
-    var pots = await getPots();
-
-    let totalAmount = 0;
-
-    pots.forEach(item => {
-        totalAmount = totalAmount + parseFloat(item.amount);
-    });
-
-    document.getElementById("totalBox").innerHTML = `TOTAL: <br> £${totalAmount.toFixed(2)}`;
-};
-
 async function viewerPopulate() {
-    var pots = await getPots();
+        var pots = await getPots();
 
-    let parent = document.getElementById("potViewer");
+        let parent = document.getElementById("potViewer");
 
-    parent.innerHTML = "";
+        parent.innerHTML = "";
 
-    pots.forEach(item => {
+        pots.forEach(item => {
 
-        let pot = document.createElement("div");
-        pot.setAttribute("class", "pot");
+            let pot = document.createElement("div");
+            pot.setAttribute("class", "pot");
 
-        html =
-        `
+            html =
+                `
         <div class="potContent">
         <h1 class="potContentName">
             ${item.name}
@@ -392,22 +382,38 @@ async function viewerPopulate() {
         <div class="potDeleteBtn" onclick="deletePot(${item.id})">Delete</div>
         `
 
-        pot.innerHTML = html;
+            pot.innerHTML = html;
 
-        parent.appendChild(pot);
-    }) 
+            parent.appendChild(pot);
+        })
 }
 
 async function deletePot(id) {
-    var pot = await getPot(id);
+        var pot = await getPot(id);
 
-    fetch(`${uri}/pots/${id}`, {
-        method: 'DELETE'
-    })
-        .then(() => {
-            document.getElementById("potViewer").innerHTML = "";
-            viewerPopulate();
+        fetch(`${uri}/pots/${id}`, {
+            method: 'DELETE'
         })
-        .catch(error => console.error('Unable to delete item.', error));
-}
+            .then(() => {
+                document.getElementById("potViewer").innerHTML = "";
+                viewerPopulate();
+            })
+            .then(() => {
+                
+            })
+            .catch(error => console.error('Unable to delete item.', error));
+};
 
+async function getTotal() {
+    var pots = await getPots();
+
+    let totalAmount = 0;
+
+    pots.forEach(item => {
+        totalAmount = totalAmount + item.amount;
+    })
+
+    let totalBox = await document.getElementById("totalBox");
+
+    totalBox.innerHTML = `TOTAL <br> £${totalAmount.toFixed(2)}`;
+}

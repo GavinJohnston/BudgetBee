@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BudgetBee.Migrations
 {
     [DbContext(typeof(BudgetBeeContext))]
-    [Migration("20220527153845_createinitial")]
+    [Migration("20220528134819_createinitial")]
     partial class createinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,22 +23,6 @@ namespace BudgetBee.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("BudgetBee.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Category");
-                });
 
             modelBuilder.Entity("BudgetBee.Models.Pot", b =>
                 {
@@ -70,8 +54,8 @@ namespace BudgetBee.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -87,8 +71,6 @@ namespace BudgetBee.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("PotId");
 
                     b.ToTable("Transaction");
@@ -96,20 +78,11 @@ namespace BudgetBee.Migrations
 
             modelBuilder.Entity("BudgetBee.Models.Transaction", b =>
                 {
-                    b.HasOne("BudgetBee.Models.Category", null)
-                        .WithMany("Transaction")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("BudgetBee.Models.Pot", null)
                         .WithMany("Transaction")
                         .HasForeignKey("PotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BudgetBee.Models.Category", b =>
-                {
-                    b.Navigation("Transaction");
                 });
 
             modelBuilder.Entity("BudgetBee.Models.Pot", b =>

@@ -10,19 +10,6 @@ namespace BudgetBee.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Pot",
                 columns: table => new
                 {
@@ -45,18 +32,13 @@ namespace BudgetBee.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Direction = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PotName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PotId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: true)
+                    PotId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transaction", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Transaction_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Transaction_Pot_PotId",
                         column: x => x.PotId,
@@ -64,11 +46,6 @@ namespace BudgetBee.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Transaction_CategoryId",
-                table: "Transaction",
-                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transaction_PotId",
@@ -80,9 +57,6 @@ namespace BudgetBee.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Transaction");
-
-            migrationBuilder.DropTable(
-                name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Pot");
