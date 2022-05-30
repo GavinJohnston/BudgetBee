@@ -21,41 +21,60 @@
 <div id="inputContainer">
     <div class="inputBox" id="depositBox">
         <h1 class="headers">Deposit</h1>
-        <form id="deposit" onsubmit="return false;">
+        <form id="deposit" onsubmit="return false;" autocomplete="off" onchange="resetForm()">
             <h2 class="formHeaders">Amount</h2>
-            <input type="number" id="Amount" name="Amount" class="numberBox" placeholder="£000.00" step="any">
+            <div class="depositInputs">
+            <input type="number" id="DepositAmount" name="Amount" class="numberBox depositItem" placeholder="£000.00" step="any">
+            <div class="depositValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Pot</h2>
-            <select id="DepositPots" name="potLists" class="potLists" placeholder="Select Pot">
-                @*<option value="firefox">Firefox</option>*@
+            <div class="depositInputs">
+            <select id="depositPots" name="potLists" class="potLists depositItem" placeholder="Select Pot">
+                
             </select>
+            
+            <div class="depositValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Category</h2>
-            <input type="text" id="Category" name="Category" class="catBox" placeholder="Wages, Savings, Gift..">
+            <div class="depositInputs">
+            <input type="text" id="depositCategory" name="Category" onchange="alphaOnly()" class="catBox depositItem" placeholder="Wages, Savings, Gift.." maxlength="8">
+            
+            <div class="depositValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Date</h2>
             <h2 class="dateText"></h2>
-            <input type="submit" class="submit" value="Deposit" onclick="addTransaction('deposit')"/>
+            <input type="submit" class="submit" value="Deposit" onclick="formValidation('deposit')" />
         </form>
     </div>
     <div class="inputBox" id="withdrawBox">
         <h1 class="headers">Withdraw</h1>
-        <form id="withdraw" onsubmit="return false;">
+        <form id="withdraw" onsubmit="return false;" autocomplete="off">
             <h2 class="formHeaders">Amount</h2>
-            <input type="number" id="MaxAmount" name="Amount" class="numberBox" step="any">
+            <div class="withdrawInputs">
+                <input type="number" id="withdrawAmount" name="Amount" class="numberBox withdrawItem" step="any">
+                <div class="withdrawValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Pot</h2>
-            <select id="withdrawPots" name="potLists" class="potLists" placeholder="Select Pot" onchange="getMaxAmount()">
-                @*<option value="firefox">Firefox</option>*@
+            <div class="withdrawInputs">
+            <select id="withdrawPots" name="potLists" class="potLists withdrawItem" placeholder="Select Pot" onchange="getMaxAmount()">
             </select>
+            <div class="withdrawValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Category</h2>
-            <input type="text" id="Category" name="Category" class="catBox" placeholder="Hobby Fund, New Laptop..">
+            <div class="withdrawInputs">
+                <input type="text" id="withdrawCategory" name="Category" class="catBox withdrawItem" placeholder="Hobby Fund, New Laptop.." maxlength="8">
+                <div class="withdrawValidationBoxes"></div>
+            </div>
             <h2 class="formHeaders">Date</h2>
             <h2 class="dateText"></h2>
-            <input type="submit" class="submit" value="Withdraw" onclick="addTransaction('withdraw')" />
+            <input type="submit" class="submit" value="Withdraw" onclick="formValidation('withdraw')" />
         </form>
     </div>
     <div class="inputBox" id="transactionHistory">
         <h1 class="headers">History</h1>
         <div id="tableContainer">
             <table id="historyTable">
-                <tbody id="historyBody">
+                
                     <tr>
                         <th>Amount</th>
                         <th>Date</th>
@@ -63,7 +82,7 @@
                         <th>Pot</th>
                         <th>Type</th>
                     </tr>
-                </tbody>
+                
             </table>
         </div>
     </div>
@@ -71,13 +90,18 @@
 <div id="potManagerContainer">
     <div id="potManagerBoxL">
         <h1 class="headers">Create Pot</h1>
-        <form class="potGenerator" onsubmit="return false;">
+        <form class="potGenerator" onsubmit="return false;" onchange="resetForm()">
             <div class="generateBox">
                 <h2 class="formHeaders">Pot Name</h2>
-                <input type="text" id="potName" class="numberBox" placeholder="Holiday Fund, New Laptop..">
-            </div>
-            <input type="submit" class="submit" value="Create Pot" onclick="addPot()">
-        </form>
+                <div id="potNameInput">
+                    <input type="text" id="potName" class="numberBox" placeholder="Holiday Fund, New Laptop..">
+                    <div class="nameValidationBox"></div>
+                </div>
+                </div>
+
+                <input type="submit" class="submit" value="Create Pot" onclick="potGenerator()">
+
+</form>
     </div>
     <div id="potManagerBoxR">
         <h1 class="headers">Pot Manager</h1>

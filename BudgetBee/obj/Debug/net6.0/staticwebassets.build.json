@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Nd/p1MvxMSA9Kp2jH8lvogr2BAIfJI5hKj7ySsXIXtA=",
+  "Hash": "aYeE5Si+YuUAvH9KLtKDHRGoHU+Fgr3uBEwbNpeyajE=",
   "Source": "BudgetBee",
   "BasePath": "_content/BudgetBee",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/gavin/Projects/BudgetBee/BudgetBee/obj/Debug/net6.0/scopedcss/projectbundle/BudgetBee.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/gavin/Projects/BudgetBee/BudgetBee/wwwroot/.DS_Store",
+      "SourceId": "BudgetBee",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/gavin/Projects/BudgetBee/BudgetBee/wwwroot/",
+      "BasePath": "_content/BudgetBee",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
     },
     {
       "Identity": "/Users/gavin/Projects/BudgetBee/BudgetBee/wwwroot/css/site.css",

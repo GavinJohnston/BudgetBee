@@ -39,8 +39,7 @@ function showModal() {
     viewerPopulate();
 }
 
-function addPot() {
-    var potName = document.getElementById("potName").value;
+function addPot(potName) {
 
     const item = {
         Name: potName,
@@ -130,8 +129,6 @@ async function addTransaction(form) {
         PotId: potId
     };
 
-    console.log(item);
-
     fetch(`${uri}/transaction`, {
         method: 'POST',
         headers: {
@@ -144,8 +141,8 @@ async function addTransaction(form) {
         .then(() => {
             viewSavedTransaction();
             valueToPot(potId, parseFloat(formValues.Amount), form);
-            document.getElementById("Amount").value = "";
-            document.getElementById("MaxAmount").value = "";
+            document.getElementById("depositAmount").value = "";
+            document.getElementById("withdrawAmount").value = "";
         })
         .catch(error => console.error('Unable to add item.', error));
 }
@@ -169,8 +166,11 @@ async function viewSavedTransaction() {
 
     let row = document.createElement('tr');
 
+    row.setAttribute("class", "historyItem");
+
     let html =
-        `<td>£ ${transaction.amount}</td>
+        `
+    <td>£ ${transaction.amount}</td>
     <td>${transaction.date.split('T')[0].split('-').reverse().join('/')}
     </td>
     <td>${transaction.category}</td>
@@ -179,11 +179,17 @@ async function viewSavedTransaction() {
 
     row.innerHTML = html;
 
+    let historyItems = document.getElementsByClassName("historyItem");
+
+    while (historyItems.length >= 20) {
+        historyItems[0].parentNode.removeChild(historyItems[0]);
+    }
+
     history.appendChild(row);
 }
 
 (async function viewSavedTransactions() {
-    const history = document.getElementById("historyBody");
+    const history = document.getElementById("historyTable");
 
     var transactions = await getTransactions();
 
@@ -191,6 +197,8 @@ async function viewSavedTransaction() {
 
         for (var i = 0; i < transactions.length; i++) {
             let row = document.createElement('tr');
+
+            row.setAttribute("class", "historyItem");
 
             let html =
             `<td>£ ${transactions[i].amount}</td>
@@ -202,6 +210,12 @@ async function viewSavedTransaction() {
 
             row.innerHTML += html;
 
+            let historyItems = document.getElementsByClassName("historyItem");
+
+            while (historyItems.length >= 20) {
+                historyItems[0].parentNode.removeChild(historyItems[0]);
+            }
+
             history.appendChild(row);
         }
 })();
@@ -212,7 +226,7 @@ async function getMaxAmount() {
 
     const potName = document.getElementById("withdrawPots").value;
 
-    const MaxAmount = document.getElementById("MaxAmount");
+    const MaxAmount = document.getElementById("withdrawAmount");
 
     let potAmount;
 
@@ -416,4 +430,52 @@ async function getTotal() {
     let totalBox = await document.getElementById("totalBox");
 
     totalBox.innerHTML = `TOTAL <br> £${totalAmount.toFixed(2)}`;
+}
+
+function formValidation(direction) {
+
+    let items = document.getElementsByClassName(`${direction}Item`);
+
+    let validationBoxes = document.getElementsByClassName(`${direction}ValidationBoxes`);
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].value.length == 0) {
+            validationBoxes[i].classList.add("cross");
+        }
+    }
+
+    let crosses = document.getElementsByClassName("cross");
+
+    if (crosses.length > 0) {
+        return;
+    } else {
+        for (let i = 0; i < items.length; i++) {
+            validationBoxes[i].classList.remove("cross");
+        }
+        addTransaction(direction);
+    }
+}
+
+function potGenerator() {
+
+    var potName = document.getElementById("potName").value;
+
+    let validationBox = document.getElementsByClassName("nameValidationBox");
+
+    if (potName.length > 0) {
+        addPot(potName);
+    } else {
+        validationBox[0].classList.add("cross");
+    }
+}
+
+function resetForm() {
+
+    let crosses = document.getElementsByClassName("cross");
+
+    for (let i = 0; i < crosses.length; i++) {
+        crosses[i].classList.remove("cross");
+    }
+
+
 }
